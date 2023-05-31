@@ -41,7 +41,7 @@ app.post('/submit-form', function(req, res) {
     subject: 'Зворотній зв\'язок з клієнтом: '+ name,
     text:message
 }
- // transporter.sendMail(mailOptions);
+  transporter.sendMail(mailOptions);
   res.status(200).send("Усе добре!");
 });
 
