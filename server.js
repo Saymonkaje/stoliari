@@ -23,7 +23,7 @@ app.post('/submit-form', function(req, res) {
   const email = req.body.email;
   const message = req.body.message;
 
-  res.status(200).send('Форма успішно відправлена!');
+  res.status(200).send("ти єблан?" + message);
 });
 
 // Запуск сервера
