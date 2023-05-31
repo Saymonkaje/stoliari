@@ -22,7 +22,7 @@ app.post('/submit-form', function(req, res) {
   const name = req.body.name;
   const email = req.body.email;
   const message = req.body.message;
-
+  console.log('message' + message);
   res.status(200).send("ти єблан?" + message);
 });
 

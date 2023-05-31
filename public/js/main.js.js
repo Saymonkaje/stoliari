@@ -36,6 +36,40 @@ $(document).ready(function(){
   });
 });
 
+// Обробник події на клік кнопки "Надіслати"
+document.querySelector('.form-btn').addEventListener('click', function(event) {
+  event.preventDefault(); // Перешкоджаємо стандартній поведінці форми
+
+  // Отримання значень полів форми
+  var name = document.querySelector('input[name="name"]').value;
+  var email = document.querySelector('input[name="email"]').value;
+  var message = document.querySelector('textarea[name="message"]').value;
+
+  // Створення об'єкта з даними форми
+  var formData = {
+    name: name,
+    email: email,
+    message: message
+  };
+
+  // Відправлення запиту на сервер
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/submit-form'); // URL серверного обробника форми
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      // Обробка успішної відправки форми
+      alert('Форма успішно відправлена!');
+      // Додаткові дії після успішної відправки форми
+    } else {
+      // Обробка помилки відправки форми
+      alert('Сталася помилка при відправці форми. Будь ласка, спробуйте пізніше.');
+    }
+  };
+  xhr.send(JSON.stringify(formData));
+});
+
+
 
 // (function() {
 //     const formEl = document.querySelector("#contactForm");
