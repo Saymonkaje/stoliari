@@ -2,6 +2,20 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import dotenv from 'dotenv'
+import nodemailer from 'nodemailer'
+dotenv.config()
+
+const {EMAIL,PASSWORD} = process.env
+const transporter = nodemailer.createTransport({
+    service:'gmail',
+    auth:{
+        user: EMAIL,
+        pass: PASSWORD   
+    }
+})
+
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -20,10 +34,15 @@ app.get('/', function(req, res) {
 app.post('/submit-form', function(req, res) {
 
   const name = req.body.name;
-  const email = req.body.email;
   const message = req.body.message;
-  console.log('message' + message);
-  res.status(200).send("ти єблан?" + message);
+  const mailOptions = {
+    from:'dmytro.kostinskyi.kn.2021@lpnu.ua',
+    to:'dmytro.kostinskyi.kn.2021@lpnu.ua',
+    subject: 'Зворотній зв\'язок з клієнтом: '+ name,
+    text:message
+}
+  transporter.sendMail(mailOptions);
+  res.status(200).send("Усе добре!");
 });
 
 // Запуск сервера

@@ -59,11 +59,11 @@ document.querySelector('.form-btn').addEventListener('click', function(event) {
   xhr.onload = function() {
     if (xhr.status === 200) {
       // Обробка успішної відправки форми
-      alert('Форма успішно відправлена!');
+      alert('Повідомлення успішно відправлене!');
       // Додаткові дії після успішної відправки форми
     } else {
       // Обробка помилки відправки форми
-      alert('Сталася помилка при відправці форми. Будь ласка, спробуйте пізніше.');
+      alert('Сталася помилка');
     }
   };
   xhr.send(JSON.stringify(formData));
