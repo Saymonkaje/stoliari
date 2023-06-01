@@ -35,10 +35,11 @@ app.post('/submit-form', function(req, res) {
 
   const name = req.body.name;
   const message = req.body.message;
+  const email = req.body.email;
   const mailOptions = {
     from:'dmytro.kostinskyi.kn.2021@lpnu.ua',
     to:'dmytro.kostinskyi.kn.2021@lpnu.ua',
-    subject: 'Зворотній зв\'язок з клієнтом: '+ name,
+    subject: 'Зворотній зв\'язок з клієнтом: '+ name +' - ' + email,
     text:message
 }
   transporter.sendMail(mailOptions);

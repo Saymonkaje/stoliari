@@ -43,11 +43,14 @@ document.querySelector('.form-btn').addEventListener('click', function(event) {
   // Отримання значень полів форми
   var name = document.querySelector('input[name="name"]').value;
   var message = document.querySelector('textarea[name="message"]').value;
-  document.getElementById('nameField').value="";
+  var email = document.querySelector('input[name="email"]').value;
+  //document.getElementById('nameField').value="";
+  //document.getElementById('email').value="";
   document.getElementById('textArea').value="";
   // Створення об'єкта з даними форми
   var formData = {
     name: name,
+    email: email,
     message: message
   };
 
